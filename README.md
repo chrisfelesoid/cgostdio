@@ -1,6 +1,6 @@
-# CGO Stdio
+# Cgo Stdio
 
-CGO Stdio is replaced C language stdio.
+Cgo Stdio is replaced C language stdio.
 
 
 ## Example
@@ -33,9 +33,12 @@ import (
 
 func main() {
 	fi, _ := os.Open("stdin.txt")
+	// swap C.stdin as "stdin.txt"
 	stdin := cgostdio.NewStdin(fi)
+	// restore swapped C.stdin
 	defer stdin.Close()
 
+    // read "stdin.txt" and write stdout
 	C.echo_from_io()
 	C.fflush(C.stdout)
 }
