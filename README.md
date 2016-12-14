@@ -2,6 +2,32 @@
 
 Cgo Stdio is replaced C language stdio.
 
+# Using
+
+```
+go get github.com/chrisfelesoid/cgostdio
+```
+
+## for Mac OS X
+
+"fmemopen" isn't defined on Max OS X. However, you can use ported library like this.
+
+- https://github.com/NimbusKit/memorymapping
+
+
+```
+git clone git@github.com:NimbusKit/memorymapping.git
+cd memorymapping/
+clang -c -g0 -Wall src/fmemopen.c
+ar rcs libfmemopen.a fmemopen.o
+```
+
+copy to library search path.(ex. /usr/local/)
+```
+cp libfmemopen.a /usr/local/lib/libfmemopen.a
+cp src/fmemopen.h /usr/local/include/fmemopen.h
+```
+
 
 ## Example
 
